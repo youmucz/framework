@@ -76,7 +76,7 @@ namespace Minikit
             Debug.DrawLine(point4, point8, _color, _duration);
         }
 
-        public static void DrawArrow(Vector3 _position, Vector3 _direction, Color _color, float _duration, float _arrowHeadLength = 0.25f, float _arrowHeadAngle = 20.0f)
+        public static void DrawArrow(Vector3 _position, Vector3 _direction, Color _color, float _duration = 0f, float _arrowHeadLength = 0.25f, float _arrowHeadAngle = 20.0f)
         {
             Debug.DrawRay(_position, _direction, _color, _duration);
 
