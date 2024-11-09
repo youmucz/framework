@@ -1,13 +1,12 @@
-using System.Collections;
+using System;
+using Godot;
 using System.Collections.Generic;
-using UnityEngine;
+using Range = Godot.Range;
 
 namespace Minikit
 {
-    public static class MKListExtensions
+    public static class ListExtensions
     {
-
-
         /// <summary> Shuffles the element order of the specified list. </summary>
         public static void Shuffle<T>(this IList<T> ts)
         {
@@ -15,11 +14,9 @@ namespace Minikit
             var last = count - 1;
             for (var i = 0; i < last; ++i)
             {
-                var r = UnityEngine.Random.Range(i, count);
-                var tmp = ts[i];
-                ts[i] = ts[r];
-                ts[r] = tmp;
+                var r =  GD.RandRange(i, count);
+                (ts[i], ts[r]) = (ts[r], ts[i]);
             }
         }
     }
-} // Minikit namespace
+}

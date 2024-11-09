@@ -1,36 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Minikit
 {
     /// <summary> Rulesets are a list of functions that return either true or false. The intention is for other 
     /// objects to add/remove rules to a ruleset, and the object that owns the ruleset determines when to check 
     /// the ruleset. </summary>
-    public class MKRuleset<T>
+    public class Ruleset<T>
     {
-        public delegate bool MKRule(T _generic);
+        public delegate bool Rule(T generic);
 
+        private readonly List<Rule> _rules = new();
 
-        private List<MKRule> rules = new();
-
-
-        public MKRuleset()
+        /// <summary> Checks if all the rules passed </summary>
+        public bool Check(T generic)
         {
-
-        }
-
-
-        /// <summary> Checks if all of the rules passed </summary>
-        public bool Check(T _generic)
-        {
-            foreach (MKRule rule in rules)
+            foreach (var rule in _rules)
             {
                 if (rule != null)
                 {
-                    if (!rule.Invoke(_generic))
+                    if (!rule.Invoke(generic))
                     {
                         return false;
                     }
@@ -40,26 +30,26 @@ namespace Minikit
             return true;
         }
 
-        public bool AddRule(MKRule _rule)
+        public bool AddRule(Rule rule)
         {
-            if (rules.Contains(_rule))
+            if (_rules.Contains(rule))
             {
                 return false;
             }
 
-            rules.Add(_rule);
+            _rules.Add(rule);
             return true;
         }
 
-        public bool RemoveRule(MKRule _rule)
+        public bool RemoveRule(Rule rule)
         {
-            if (!rules.Contains(_rule))
+            if (!_rules.Contains(rule))
             {
                 return false;
             }
 
-            rules.Remove(_rule);
+            _rules.Remove(rule);
             return true;
         }
     }
-} // Minikit namespace
+}
