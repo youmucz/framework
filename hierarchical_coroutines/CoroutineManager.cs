@@ -60,6 +60,8 @@ public partial class CoroutineManager : Node
         coroutine.Stopped += () => _aliveRootCoroutines.Remove(coroutine);
         coroutine.Init();
         _aliveRootCoroutines.Add(coroutine);
+        
+        GD.Print("Starting coroutine " + coroutine);
     }
     
     /// <summary>
