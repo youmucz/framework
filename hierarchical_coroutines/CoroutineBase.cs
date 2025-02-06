@@ -287,7 +287,8 @@ public class CoroutineBase
         bool shouldBeRunning = RunMode switch {
             CoRunMode.Always => true,
             CoRunMode.Pausable => !isGamePaused,
-            CoRunMode.WhenPaused => isGamePaused
+            CoRunMode.WhenPaused => isGamePaused,
+            _ => throw new ArgumentOutOfRangeException()
         };
 
         if (IsRunning == shouldBeRunning)
