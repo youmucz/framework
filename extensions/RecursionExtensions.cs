@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Minikit
+namespace framework.extensions
 {
     // public static class RecursionExtensions
     // {

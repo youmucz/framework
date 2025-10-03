@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Minikit
+namespace framework.debug
 {
     /// <summary> Helper class with additional functions that aren't included in Unity's Gizmos class </summary>
     public static class Gizmos

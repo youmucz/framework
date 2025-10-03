@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Minikit
+namespace framework.extensions
 {
     public static class TypeExtensions
     {

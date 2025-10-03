@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://144aykfua63p"]
+
+[ext_resource type="Script" uid="uid://b10bq0w31vvrd" path="res://addons/framework/utility/hierarchical_coroutines/CoroutineManager.cs" id="1_cmy27"]
+
+
+[node name="CoroutineManager" type="Node"]
+script = ExtResource("1_cmy27")

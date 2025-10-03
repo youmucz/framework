@@ -3,7 +3,7 @@ using Godot;
 using System.Collections.Generic;
 using Range = Godot.Range;
 
-namespace Minikit
+namespace framework.extensions
 {
     public static class ListExtensions
     {

@@ -2,25 +2,29 @@ using Godot;
 using System.Collections;
 using System.Collections.Generic;
 
-public static class GeometryExtensions
+namespace framework.extensions
 {
-    public static List<Vector3> FibonacciSphere(int n)
+    public static class GeometryExtensions
     {
-        var list = new List<Vector3>();
-        var phi = Mathf.Pi * (3f - Mathf.Sqrt(5f));
-
-        for (var i = 0; i < n; i++)
+        public static List<Vector3> FibonacciSphere(int n)
         {
-            var y = 1f - (i / (float)(n - 1)) * 2f;
-            var r = Mathf.Sqrt(1f - y * y);
-            var theta = phi * i;
+            var list = new List<Vector3>();
+            var phi = Mathf.Pi * (3f - Mathf.Sqrt(5f));
 
-            var x = Mathf.Cos(theta) * r;
-            var z = Mathf.Sin(theta) * r;
+            for (var i = 0; i < n; i++)
+            {
+                var y = 1f - (i / (float)(n - 1)) * 2f;
+                var r = Mathf.Sqrt(1f - y * y);
+                var theta = phi * i;
 
-            list.Add(new Vector3(x, y, z));
+                var x = Mathf.Cos(theta) * r;
+                var z = Mathf.Sin(theta) * r;
+
+                list.Add(new Vector3(x, y, z));
+            }
+
+            return list;
         }
-
-        return list;
     }
 }
+
