@@ -6,6 +6,8 @@ namespace pachinko.scripts.managers
 {
     public partial class ITerrainManager : IService
     {
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             throw new NotImplementedException();

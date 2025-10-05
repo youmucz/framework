@@ -19,7 +19,8 @@ namespace framework.systems.managers
         private float _masterVolume = 1.0f;
         private float _bgmVolume = 1.0f;
         private float _sfxVolume = 1.0f;
-        
+        private IService _serviceImplementation;
+
         public float MasterVolume
         {
             get => _masterVolume;
@@ -49,7 +50,9 @@ namespace framework.systems.managers
                 UpdateVolumes();
             }
         }
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             // 初始化BGM播放器

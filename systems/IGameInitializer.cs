@@ -8,8 +8,7 @@ namespace framework.systems
 {
     public partial class IGameInitializer : Node
     {
-        [Export] private PackedScene _mainMenuScene;
-        [Export] private bool _skipToMainMenu = true;
+        private bool _skipToMainMenu = true;
         
         public override void _Ready()
         {
@@ -35,13 +34,6 @@ namespace framework.systems
             
             // 预加载资源
             PreloadEssentialResources();
-            
-            // 进入主菜单
-            if (_skipToMainMenu && _mainMenuScene != null)
-            {
-                var sceneManager = ServiceLocator.Instance.Get<ISceneManager>();
-                await sceneManager.LoadSceneAsync(_mainMenuScene.ResourcePath);
-            }
             
             GD.Print("Game initialization completed!");
         }
@@ -107,7 +99,7 @@ namespace framework.systems
             {
                 // 预加载必要资源
                 string[] essentialResources = {
-                    "res://packages/scenes/main_menu.tscn",
+                    "res://packages/scenes/ui/main_menu.tscn",
                     // "res://UI/LoadingScreen.tscn",
                     // "res://UI/PauseMenu.tscn",
                     // "res://Audio/UI/button_click.ogg",

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using framework.systems.core.services;
-using pachinko.scripts.core;
 
 namespace framework.systems.managers
 {
@@ -23,7 +22,9 @@ namespace framework.systems.managers
         
         public Vector2 MousePosition => _mousePosition;
         public Vector2 MouseDelta => _mouseDelta;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             SetupDefaultActions();

@@ -10,7 +10,9 @@ namespace framework.systems.managers
     {
         private readonly Dictionary<string, ObjectPool> _pools = new();
         private Node _poolContainer;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             // 创建对象池容器

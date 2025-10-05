@@ -8,7 +8,9 @@ namespace framework.systems.managers
     public class IGameDataManager : IService
     {
         private readonly Dictionary<string, Resource> _gameData = new();
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             LoadAllGameData();

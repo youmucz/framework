@@ -17,7 +17,9 @@ namespace framework.systems.managers
         public event Action<string> OnLanguageChanged;
         
         public string CurrentLanguage => _currentLanguage;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             LoadAllLanguages();

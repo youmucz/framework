@@ -27,7 +27,9 @@ namespace framework.systems.managers
                 new DateTimeJsonConverter()
             }
         };
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             _savePath = OS.GetUserDataDir() + "/saves/";

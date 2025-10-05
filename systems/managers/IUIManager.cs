@@ -10,7 +10,9 @@ namespace framework.systems.managers
         private CanvasLayer _uiLayer;
         private readonly Dictionary<string, Control> _uiPanels = new();
         private readonly Stack<Control> _uiStack = new();
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             _uiLayer = new CanvasLayer { Layer = 10 };

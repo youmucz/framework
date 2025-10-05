@@ -16,7 +16,9 @@ namespace framework.systems.managers
         public event Action<string, object> OnSettingChanged;
         
         public GameSettings CurrentSettings => _currentSettings;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             LoadSettings();

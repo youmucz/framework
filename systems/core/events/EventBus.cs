@@ -11,7 +11,9 @@ namespace framework.systems.core.events
         private readonly Dictionary<Type, List<Delegate>> _eventHandlers = new();
         private readonly Queue<object> _eventQueue = new();
         private bool _isProcessing;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             DebugLog.InfoLog("EventBus initialized");
@@ -21,12 +23,13 @@ namespace framework.systems.core.events
         {
             var eventType = typeof(T);
             
-            if (!_eventHandlers.ContainsKey(eventType))
+            if (!_eventHandlers.TryGetValue(eventType, out var value))
             {
-                _eventHandlers[eventType] = new List<Delegate>();
+                value = new List<Delegate>();
+                _eventHandlers[eventType] = value;
             }
-            
-            _eventHandlers[eventType].Add(handler);
+
+            value.Add(handler);
         }
         
         public void Unsubscribe<T>(Action<T> handler) where T : IGameEvent

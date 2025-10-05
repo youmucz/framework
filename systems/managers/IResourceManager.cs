@@ -16,7 +16,9 @@ namespace framework.systems.managers
         public event Action<string, float> OnResourceLoadProgress;
         public event Action<string> OnResourceLoaded;
         public event Action<string> OnResourceLoadFailed;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             GD.Print("ResourceManager initialized");

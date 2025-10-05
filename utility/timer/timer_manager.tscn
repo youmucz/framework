@@ -3,5 +3,6 @@
 [ext_resource type="Script" uid="uid://0fy0oqvihxr8" path="res://addons/framework/utility/timer/TimerManager.cs" id="1_02q8r"]
 
 
+
 [node name="TimerManager" type="Node"]
 script = ExtResource("1_02q8r")

@@ -1,10 +1,12 @@
 using framework.systems.core.services;
 using Godot;
 
-namespace pachinko.scripts.managers
+namespace framework.systems.managers
 {
     public partial class ICameraManager : IService
     {
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
             throw new System.NotImplementedException();

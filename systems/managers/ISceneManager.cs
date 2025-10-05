@@ -16,14 +16,18 @@ namespace framework.systems.managers
         
         public event Action<string> OnSceneLoadStarted;
         public event Action<string> OnSceneLoadCompleted;
-        
+
+        public ServiceLocator Locator { get; set; }
+
         public void Initialize()
         {
+            Locator.AddChild(this);
+            
             _transition = new SceneTransition();
             CallDeferred(Node.MethodName.AddChild, _transition);
         }
         
-        public async Task LoadSceneAsync(string scenePath, TransitionType transitionType = TransitionType.Fade)
+        public async Task LoadSceneAsync<T>(string scenePath, TransitionType transitionType = TransitionType.Fade) where T : Node
         {
             if (_isLoading) return;
             
@@ -46,7 +50,7 @@ namespace framework.systems.managers
             _currentScene?.QueueFree();
             
             // 实例化新场景
-            _currentScene = packedScene.Instantiate();
+            _currentScene = packedScene.Instantiate<T>();
             GetTree().Root.AddChild(_currentScene);
             GetTree().CurrentScene = _currentScene;
             
@@ -60,17 +64,17 @@ namespace framework.systems.managers
             ServiceLocator.Instance.Get<EventBus>()?.Publish(new SceneLoadedEvent { ScenePath = scenePath });
         }
         
-        public void LoadScene(string scenePath)
+        public void LoadScene<T>(string scenePath) where T : Node
         {
-            _ = LoadSceneAsync(scenePath);
+            _ = LoadSceneAsync<T>(scenePath);
         }
         
-        public void ReloadCurrentScene()
+        public void ReloadCurrentScene<T>() where T : Node
         {
             if (_currentScene != null)
             {
                 var scenePath = _currentScene.SceneFilePath;
-                LoadScene(scenePath);
+                LoadScene<T>(scenePath);
             }
         }
         
@@ -111,26 +115,33 @@ namespace framework.systems.managers
         {
             _tween?.Kill();
             _tween = CreateTween();
-            
-            switch (type)
+
+            if (_overlay != null)
             {
-                case TransitionType.Fade:
-                    _tween.TweenProperty(_overlay, "modulate:a", 1.0f, 0.3f);
-                    break;
-                case TransitionType.Slide:
-                    _overlay.Position = new Vector2(-GetViewport().GetVisibleRect().Size.X, 0);
-                    _overlay.Modulate = new Color(1, 1, 1, 1);
-                    _tween.TweenProperty(_overlay, "position:x", 0, 0.3f);
-                    break;
-                case TransitionType.Zoom:
-                    _overlay.Scale = Vector2.Zero;
-                    _overlay.Modulate = new Color(1, 1, 1, 1);
-                    _overlay.PivotOffset = GetViewport().GetVisibleRect().Size / 2;
-                    _tween.TweenProperty(_overlay, "scale", Vector2.One, 0.3f);
-                    break;
-            }
+                switch (type)
+                {
+                    case TransitionType.Fade:
+                        _tween.TweenProperty(_overlay, "modulate:a", 1.0f, 0.3f);
+                        break;
+                    case TransitionType.Slide:
+                        _overlay.Position = new Vector2(-GetViewport().GetVisibleRect().Size.X, 0);
+                        _overlay.Modulate = new Color(1, 1, 1, 1);
+                        _tween.TweenProperty(_overlay, "position:x", 0, 0.3f);
+                        break;
+                    case TransitionType.Zoom:
+                        _overlay.Scale = Vector2.Zero;
+                        _overlay.Modulate = new Color(1, 1, 1, 1);
+                        _overlay.PivotOffset = GetViewport().GetVisibleRect().Size / 2;
+                        _tween.TweenProperty(_overlay, "scale", Vector2.One, 0.3f);
+                        break;
+                    case TransitionType.None:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                }
             
-            await ToSignal(_tween, Tween.SignalName.Finished);
+                await ToSignal(_tween, Tween.SignalName.Finished);
+            }
         }
         
         public async Task EndTransition()

@@ -11,6 +11,7 @@ namespace framework.systems.core.services
 {
     public interface IService
     {
+        public abstract ServiceLocator Locator { get; set; }
         void Initialize();
         void Shutdown();
     }
@@ -44,13 +45,13 @@ namespace framework.systems.core.services
         {
             var type = typeof(T);
             
-            if (_services.ContainsKey(type))
+            if (!_services.TryAdd(type, service))
             {
                 GD.PrintErr($"Service {type.Name} already registered!");
                 return;
             }
             
-            _services[type] = service;
+            service.Locator = this;
             service.Initialize();
             
             if (service is IUpdateable updateable)
