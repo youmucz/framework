@@ -1,12 +1,13 @@
 // Scripts/Managers/InputManager.cs
 using System;
 using System.Collections.Generic;
+using framework.systems.core.interfaces;
 using Godot;
 using framework.systems.core.services;
 
 namespace framework.systems.managers
 {
-    public partial class InputManager : Node, IService, IUpdateable
+    public partial class IInputManager : Node, IService, IUpdateable
     {
         private readonly Dictionary<string, InputAction> _actions = new();
         private readonly Dictionary<string, float> _axes = new();

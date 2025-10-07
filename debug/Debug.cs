@@ -8,12 +8,12 @@ namespace framework.debug
     {
         public static void InfoLog(string message)
         {
-            
+            GD.Print(message);
         }
 
         public static void ErrorLog(string message)
         {
-            
+            GD.PrintErr(message);
         }
     }
 }

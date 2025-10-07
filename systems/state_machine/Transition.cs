@@ -5,8 +5,8 @@ using Godot;
 
 namespace framework.systems.state_machine
 {
-    [Tool, GlobalClass, Icon("res://addons/state_machine/assets/transition.svg")]
-    public partial class Transition : NodeStateMachine
+    [Tool, GlobalClass, Icon("res://addons/framework/assets/state_machine/transition.svg")]
+    public partial class Transition : HStateMachine
     {
         [Export]
         public State TargetState
@@ -21,8 +21,15 @@ namespace framework.systems.state_machine
         }
         private State _targetState;
         private State _ownerState;
-    
         private StateMachine _stateMachine;
+        
+        /// <summary>
+        /// Fired when this transition is taken. For delayed transitions,
+        /// this signal will be fired when the transition is actually executed
+        /// (e.g., when its delay has elapsed and the transition has not been aborted before).
+        /// The signal will always be fired before the state is exited.
+        /// </summary>
+        [Signal] public delegate void TokenEventHandler();
 
         public Transition()
         {
@@ -49,5 +56,12 @@ namespace framework.systems.state_machine
 #endif
 
         public virtual bool CanTransition() { return true; }
+        
+        public virtual float GetDelay() { return 0; }
+
+        public virtual StringName GetTargetName()
+        {
+            return _targetState.GetName();
+        }
     }
 }

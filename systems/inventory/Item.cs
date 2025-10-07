@@ -11,8 +11,7 @@ namespace framework.systems.inventory
 
         protected readonly List<Shard> DynamicShards = new();
         protected ItemDefinitionScriptableObject ItemDefinition { get; private set; }
-
-
+        
         public Item(ItemDefinitionScriptableObject itemDefinition, List<Shard> additionalDynamicShards = null)
         {
             ItemDefinition = itemDefinition;

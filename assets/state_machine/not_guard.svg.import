@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rs2go8buox21"
-path="res://.godot/imported/all_of_guard.svg-c66b8fdbf7bc4ee549263daf8c36cfe8.ctex"
+uid="uid://bisved7ym5tvx"
+path="res://.godot/imported/not_guard.svg-1385ae15029568367b29757883417296.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/framework/systems/state_machine/assets/all_of_guard.svg"
-dest_files=["res://.godot/imported/all_of_guard.svg-c66b8fdbf7bc4ee549263daf8c36cfe8.ctex"]
+source_file="res://addons/framework/assets/state_machine/not_guard.svg"
+dest_files=["res://.godot/imported/not_guard.svg-1385ae15029568367b29757883417296.ctex"]
 
 [params]
 

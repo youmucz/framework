@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bisved7ym5tvx"
-path="res://.godot/imported/not_guard.svg-a8bc0dc1a82fe9b18f6f3073df0cdd9c.ctex"
+uid="uid://c1hrq7biugxl2"
+path="res://.godot/imported/atomic_state.svg-0e7ef8e52817cf97e6060587704035e1.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/framework/systems/state_machine/assets/not_guard.svg"
-dest_files=["res://.godot/imported/not_guard.svg-a8bc0dc1a82fe9b18f6f3073df0cdd9c.ctex"]
+source_file="res://addons/framework/assets/state_machine/atomic_state.svg"
+dest_files=["res://.godot/imported/atomic_state.svg-0e7ef8e52817cf97e6060587704035e1.ctex"]
 
 [params]
 

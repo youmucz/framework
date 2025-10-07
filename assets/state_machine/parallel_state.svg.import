@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnp2u7pogxwu6"
-path="res://.godot/imported/expression_guard.svg-dd63653d8ef85dc844736fe06260fa8d.ctex"
+uid="uid://488g570xvapx"
+path="res://.godot/imported/parallel_state.svg-4554e61a8ebf7712ceb67e08eb8a9f51.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/framework/systems/state_machine/assets/expression_guard.svg"
-dest_files=["res://.godot/imported/expression_guard.svg-dd63653d8ef85dc844736fe06260fa8d.ctex"]
+source_file="res://addons/framework/assets/state_machine/parallel_state.svg"
+dest_files=["res://.godot/imported/parallel_state.svg-4554e61a8ebf7712ceb67e08eb8a9f51.ctex"]
 
 [params]
 

@@ -1,15 +1,12 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using Godot.Collections;
 
 namespace framework.systems.state_machine
 {
     /// <summary>
     /// This is a state that has no sub_states.
     /// </summary>
-    [Tool, GlobalClass, Icon("res://addons/state_machine/assets/atomic_state.svg")]
+    [Tool, GlobalClass, Icon("res://addons/framework/assets/state_machine/atomic_state.svg")]
     public partial class AtomicState : State
     {
         public AtomicState()

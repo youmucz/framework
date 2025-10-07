@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace framework.systems.state_machine
 {
-    [Tool, GlobalClass, Icon("res://addons/state_machine/assets/compound_state.svg")]
+    [Tool, GlobalClass, Icon("res://addons/framework/assets/state_machine/compound_state.svg")]
     public partial class CompoundState : State
     {
         [Export]
@@ -67,13 +67,13 @@ namespace framework.systems.state_machine
         }
 #endif
 
-        public override State ProcessTransition()
+        public override State ProcessTransition(TriggerType triggerType, StringName eventName)
         {
-            var targetState = base.ProcessTransition();
+            var targetState = base.ProcessTransition(triggerType, eventName);
 
             if (IsInstanceValid(_activeState))
             {
-                targetState = _activeState.ProcessTransition();
+                targetState = _activeState.ProcessTransition(triggerType, eventName);
             }
 
             if (targetState != null)

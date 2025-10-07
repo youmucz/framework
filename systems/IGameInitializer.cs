@@ -12,6 +12,7 @@ namespace framework.systems
         
         public override void _Ready()
         {
+            SetName("GameInitializer");
             InitializeGame();
         }
         

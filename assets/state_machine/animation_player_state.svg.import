@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cisvjbkn5y885"
-path="res://.godot/imported/history_state.svg-aacfe765c98378778c2647faaa9f458f.ctex"
+uid="uid://dkvr7dfbefn70"
+path="res://.godot/imported/animation_player_state.svg-2d989d8e1c1e118b184343c33615887f.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/framework/systems/state_machine/assets/history_state.svg"
-dest_files=["res://.godot/imported/history_state.svg-aacfe765c98378778c2647faaa9f458f.ctex"]
+source_file="res://addons/framework/assets/state_machine/animation_player_state.svg"
+dest_files=["res://.godot/imported/animation_player_state.svg-2d989d8e1c1e118b184343c33615887f.ctex"]
 
 [params]
 

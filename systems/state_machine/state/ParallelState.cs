@@ -5,9 +5,9 @@ using System.Linq;
 namespace framework.systems.state_machine
 {
     /// <summary>
-    /// ## A parallel state is a state which can have sub-states, all of which are active when the parallel state is active.
+    /// A parallel state is a state which can have sub-states, all of which are active when the parallel state is active.
     /// </summary>
-    [Tool, GlobalClass, Icon("res://addons/state_machine/assets/parallel_state.svg")]
+    [Tool, GlobalClass, Icon("res://addons/framework/assets/state_machine/parallel_state.svg")]
     public partial class ParallelState : State
     {
         public ParallelState()
@@ -28,13 +28,13 @@ namespace framework.systems.state_machine
         }
 #endif
 
-        public override State ProcessTransition()
+        public override State ProcessTransition(TriggerType triggerType, StringName eventName)
         {
-            var targetState = base.ProcessTransition();
+            var targetState = base.ProcessTransition(triggerType, eventName);
 
             foreach (var state in States)
             {
-                targetState = state.ProcessTransition();
+                targetState = state.ProcessTransition(triggerType, eventName);
             }
         
             return targetState;

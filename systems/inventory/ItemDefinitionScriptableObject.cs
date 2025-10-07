@@ -100,16 +100,16 @@ namespace framework.systems.inventory
             return foundShards;
         }
 
-#if UNITY_EDITOR
+#if TOOLS
         public void AddStaticShard(Shard _shard)
         {
-            staticShards.Add(_shard);
+            // staticShards.Add(_shard);
         }
 
         public void AddDynamicShard(Shard _shard)
         {
-            dynamicShards.Add(_shard);
+            // dynamicShards.Add(_shard);
         }
-#endif // UNITY_EDITOR
+#endif
     }
 }

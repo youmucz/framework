@@ -4,59 +4,57 @@ using System.Collections.Generic;
 using framework.systems.core.events;
 using framework.systems.core.interfaces;
 using framework.systems.core.services;
-using framework.systems.managers;
-using IUpdateable = framework.systems.core.services.IUpdateable;
 
-namespace framework.systems
+namespace framework.systems.managers
 {
-    public abstract partial class IGameController : Node
+    public partial class IUpdateManager : Node, IService
     {
-        protected ServiceLocator Services => ServiceLocator.Instance;
-        protected EventBus EventBus => Services.Get<EventBus>();
-        protected ISceneManager SceneManager => Services.Get<ISceneManager>();
-        protected IAudioManager AudioManager => Services.Get<IAudioManager>();
-        protected ISaveSystem SaveSystem => Services.Get<ISaveSystem>();
-        protected IResourceManager ResourceManager => Services.Get<IResourceManager>();
+        private EventBus EventBus => ServiceLocator.Instance.Get<EventBus>();
         
-        private readonly List<IUpdateable> _updateables = new();
-        private readonly List<IFixedUpdateable> _fixedUpdateables = new();
+        private readonly List<IUpdateable> _updateable = new();
+        private readonly List<IFixedUpdateable> _fixedUpdateable = new();
         
-        public override void _Ready()
+        public ServiceLocator Locator { get; set; }
+        
+        public void Initialize()
         {
-            base._Ready();
-            OnInitialize();
-            RegisterUpdateables();
+            SetName("UpdateManager");
+            Locator.AddChild(this);
+            RegisterUpdateable();
+        }
+
+        public void Shutdown()
+        {
+            
         }
         
-        protected virtual void OnInitialize() { }
-        
-        protected virtual void RegisterUpdateables()
+        protected virtual void RegisterUpdateable()
         {
             // 子类注册需要更新的组件
         }
         
         protected void RegisterUpdateable(IUpdateable updateable)
         {
-            if (!_updateables.Contains(updateable))
+            if (!_updateable.Contains(updateable))
             {
-                _updateables.Add(updateable);
+                _updateable.Add(updateable);
             }
         }
         
-        protected void RegisterFixedUpdateable(IFixedUpdateable fixedUpdateable)
+        protected void RegisterFixedUpdater(IFixedUpdateable fixedUpdateable)
         {
-            if (!_fixedUpdateables.Contains(fixedUpdateable))
+            if (!_fixedUpdateable.Contains(fixedUpdateable))
             {
-                _fixedUpdateables.Add(fixedUpdateable);
+                _fixedUpdateable.Add(fixedUpdateable);
             }
         }
         
         public override void _Process(double delta)
         {
             var deltaTime = (float)delta;
-            foreach (var updateable in _updateables)
+            foreach (var updater in _updateable)
             {
-                updateable.Update(deltaTime);
+                updater.Update(deltaTime);
             }
             
             OnUpdate(deltaTime);
@@ -65,7 +63,7 @@ namespace framework.systems
         public override void _PhysicsProcess(double delta)
         {
             var fixedDeltaTime = (float)delta;
-            foreach (var fixedUpdateable in _fixedUpdateables)
+            foreach (var fixedUpdateable in _fixedUpdateable)
             {
                 fixedUpdateable.FixedUpdate(fixedDeltaTime);
             }
@@ -79,8 +77,8 @@ namespace framework.systems
         public override void _ExitTree()
         {
             OnCleanup();
-            _updateables.Clear();
-            _fixedUpdateables.Clear();
+            _updateable.Clear();
+            _fixedUpdateable.Clear();
             base._ExitTree();
         }
         

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clcpoi3h7mtor"
-path="res://.godot/imported/transition.svg-7c82b62a84fb6d07f6b5e067a8359bbb.ctex"
+uid="uid://cisvjbkn5y885"
+path="res://.godot/imported/history_state.svg-d9b980956f4534661adade359d5ec0d8.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/framework/systems/state_machine/assets/transition.svg"
-dest_files=["res://.godot/imported/transition.svg-7c82b62a84fb6d07f6b5e067a8359bbb.ctex"]
+source_file="res://addons/framework/assets/state_machine/history_state.svg"
+dest_files=["res://.godot/imported/history_state.svg-d9b980956f4534661adade359d5ec0d8.ctex"]
 
 [params]
 

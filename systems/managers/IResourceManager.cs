@@ -21,7 +21,7 @@ namespace framework.systems.managers
 
         public void Initialize()
         {
-            GD.Print("ResourceManager initialized");
+            
         }
         
         public async Task<T> LoadAsync<T>(string path) where T : Resource
