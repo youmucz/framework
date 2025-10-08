@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using framework.systems.tag.Internal;
+using framework.modules.tag;
 
 namespace framework.editor
 {

@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using Godot;
-using framework.systems.core.services;
-using framework.systems.managers;
+using framework.core.services;
+using framework.modules.managers;
 
 
 namespace framework.model
@@ -257,7 +257,7 @@ private void InitializeDefaultKeyBindings()
         
         private void ApplyAudioSettings()
         {
-            var audioManager = ServiceLocator.Instance?.Get<IAudioManager>();
+            var audioManager = ServiceLocator.Instance?.GetService<IAudioManager>("AudioManager");
             if (audioManager != null)
             {
                 audioManager.MasterVolume = MasterVolume;
